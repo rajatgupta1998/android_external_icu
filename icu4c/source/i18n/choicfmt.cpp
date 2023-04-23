@@ -37,6 +37,8 @@
 #include "messageimpl.h"
 #include "putilimp.h"
 #include "uassert.h"
+
+#include <cstdio>
 #include <stdio.h>
 #include <float.h>
 
@@ -175,7 +177,7 @@ ChoiceFormat::dtos(double value,
     char *itrPtr = temp;
     char *expPtr;
 
-    sprintf(temp, "%.*g", DBL_DIG, value);
+    std::snprintf(temp, sizeof(temp), "%.*g", DBL_DIG, value);
 
     /* Find and convert the decimal point.
        Using setlocale on some machines will cause sprintf to use a comma for certain locales.
